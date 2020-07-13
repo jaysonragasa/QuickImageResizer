@@ -1,0 +1,87 @@
+﻿<Window x:Class="ImageQuickResize.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Quick Image Resizer" Height="287" Width="430" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowDrop="True">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+            <StackPanel Width="200" VerticalAlignment="Center">
+                <Border Background="Gray">
+                    <Grid>
+                        <Image x:Name="img" Width="200" Height="200" AllowDrop="True" RenderTransformOrigin="0.5,0.5" />
+                        <TextBlock x:Name="lbDropImageHere" Text="Drop iamge here" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" />
+                    </Grid>
+                </Border>
+                <Button x:Name="btnBrowse" Content=" . . . " />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <StackPanel Margin="10">
+                <TextBlock Text="Size Option" FontWeight="Bold" />
+                <RadioButton GroupName="quickselection" x:Name="rbAvatar" Content="Avatar (90x90)" IsChecked="True" />
+                <RadioButton GroupName="quickselection" x:Name="rbMsgBrd" Content="Message Board (640x480)" />
+                <RadioButton GroupName="quickselection" x:Name="rb800" Content="800pixels" />
+
+                <TextBlock Text="" />
+
+                <TextBlock Text="Override Size" FontWeight="Bold" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <TextBlock Text="Width" />
+                        <TextBox x:Name="txWidth" Text="800" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Height" />
+                        <TextBox x:Name="txHeight" Text="800" />
+                    </StackPanel>
+                </Grid>
+
+                <TextBlock Text="" />
+
+                <!-- compression -->
+                <TextBlock Text="Compression" FontWeight="Bold" Visibility="Collapsed" />
+                <Grid Visibility="Collapsed" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Slider Minimum="50" Maximum="100" Value="80" x:Name="sliderCompression" SmallChange="1" />
+                    <TextBox x:Name="txCompression" Text="{Binding Value, ElementName=sliderCompression}" Grid.Column="2" TextAlignment="Center" />
+                </Grid>
+
+                <Button x:Name="btnResize" Content="Resize " IsDefault="True" />
+
+                <TextBlock Text=" " />
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="rotateLeft" Content="  " FontFamily="Segoe MDL2 Assets" Height="30" FontSize="18" Click="rotateLeft_Click" />
+
+                    <Button x:Name="rotateRight" Content="  " FontFamily="Segoe MDL2 Assets" Grid.Column="2" Height="30" FontSize="18" Click="rotateRight_Click" />
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <TextBlock Text="PinoyTouch.IO" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.ColumnSpan="2" Margin="10" Foreground="Gainsboro" />
+    </Grid>
+</Window>
