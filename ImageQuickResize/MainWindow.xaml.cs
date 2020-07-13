@@ -35,6 +35,7 @@ namespace ImageQuickResize
         {
             rbAvatar.Click += ResizeOption_Click;
             rbMsgBrd.Click += ResizeOption_Click;
+            rb800.Click += ResizeOption_Click;
             btnBrowse.Click += btnBrowse_Click;
             btnResize.Click += btnResize_Click;
 
